@@ -83,6 +83,13 @@ As ```events.results``` is a list, you can iterate over it to pick out individua
 for event in events.results:
   print(event['name'])
 ```
+Note that each event might not have all the same fields as each other. If you try and use a field that isn't there you will get an error. To guard against that, you may need to test to see whether the field actually exists before asking for it. You can do that by:
+```python
+if 'name' in event:
+  print(event['name'])
+else:
+  print("No name for this event")
+```
 ### Now try...
 * Print out a list of event titles and the number of people for each event who have RSVPed 'Yes'
 * Get a list of events for another group - e.g. rladies-london (You can get the right name for each group from the meetup.com URL after the www.meetup.com bit)
