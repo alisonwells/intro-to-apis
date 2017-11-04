@@ -1,24 +1,24 @@
-#Working with the Meetup API
+# Working with the Meetup API
 
-##1. Get an API key for the Meetup API
+## 1. Get an API key for the Meetup API
 Go to https://secure.meetup.com/meetup_api/key/ and after logging in you should see your unique API key. As it says, protect this and don't share it.
 
-##2. Protect your key
+## 2. Protect your key
 A good way to protect your key is to keep it in a separate file. This allows you to share your main code and commit it to github without sharing your keys.  Create a file called ```config.py``` containing the following:
 ```python
 MEETUP_KEY = your_meetup_key
 ```
-####An alternative method
+### An alternative method
 You can also export it to an environment value at the command line which the python package will automatically use. However I tend to find that this environment variable is easily lost and you still need to store the key somewhere.
 ```bash
 $ export MEETUP_API_KEY=your_meetup_key
 ```
-##3. Install the meetup-api Python package
+## 3. Install the meetup-api Python package
 ```python
 pip install meetup-api
 ```
 
-##4. Connect to the Meetup API
+## 4. Connect to the Meetup API
 Create a new file called ```meetup-events.py``` containing the following:
 ```python
 import meetup.api
@@ -27,14 +27,14 @@ import config # Where your key is stored
 client = meetup.api.Client()
 client.api_key = config.MEETUP_KEY # Access the key from the config file
 ```
-##5. Get a list of events for a group
+## 5. Get a list of events for a group
 That has set up the access to the API. Now let's use that connection to look at the AI Club's events. Add the following code:
 ```python
 events = client.GetEvents(group_urlname='ai-club') # Get all the events for AI Club
 print(events.results)
 ```
 You will see that you get a list of separate events with a dictionary of information for each event. When dealing with JSON, I always use a linter to help me read it - there are many online ones e.g. https://jsonlint.com
-##6. Look at an event in detail
+## 6. Look at an event in detail
 One event looks like this:
 ```json
 {
@@ -83,12 +83,12 @@ As ```events.results``` is a list, you can iterate over it to pick out individua
 for event in events.results:
   print(event['name'])
 ```
-###Now try..
+### Now try..
 * Print out a list of event titles and the number of people for each event who have RSVPed 'Yes'
 * Get a list of events for another group - e.g. rladies-london (You can get the right name for each group from the meetup.com URL after the www.meetup.com bit)
 * Replace the ```group_urlname``` parameter with ```rsvp='Yes'``` to get a list of all the upcoming events you have RSVPed 'yes' to
 
-###7. Dates and Times
+### 7. Dates and Times
 The timestamps in the event details are expressed as milliseconds *(why do we need millisecond precision for meetup times!)* after 1st January 1970. You can use the ```datetime``` library to convert them to human readable form.
 
 This example takes the timestamp and turns it into a datetime object, then formats it into ISO 8601 style.
@@ -107,7 +107,7 @@ print(formattedDate)
 ```
 Also note that they are all in [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) so you may need to consider the UTC offset information too.
 
-###Now try...
+### Now try...
 * Convert the above code into a function and use it to print out a human readable list of event titles and start times
 * Use the duration field to calculate the end time of each event
 * Change the format of the date and time to be like "18:30, 9 November 2017"
