@@ -83,7 +83,7 @@ As ```events.results``` is a list, you can iterate over it to pick out individua
 for event in events.results:
   print(event['name'])
 ```
-### Now try..
+### Now try...
 * Print out a list of event titles and the number of people for each event who have RSVPed 'Yes'
 * Get a list of events for another group - e.g. rladies-london (You can get the right name for each group from the meetup.com URL after the www.meetup.com bit)
 * Replace the ```group_urlname``` parameter with ```rsvp='Yes'``` to get a list of all the upcoming events you have RSVPed 'yes' to
@@ -114,7 +114,7 @@ Also note that they are all in [UTC](https://en.wikipedia.org/wiki/Coordinated_U
 
 
 
-References
-[Meetup API - Documentation](https://www.meetup.com/meetup_api/)
-[meetup-api Python package - Documentation](http://meetup-api.readthedocs.io/en/latest/)
-[datetime Python package - Documentation](https://docs.python.org/2/library/datetime.html)
+###References
+* [Meetup API - Documentation](https://www.meetup.com/meetup_api/)
+* [meetup-api Python package - Documentation](http://meetup-api.readthedocs.io/en/latest/)
+* [datetime Python package - Documentation](https://docs.python.org/2/library/datetime.html)
