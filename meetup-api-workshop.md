@@ -119,9 +119,7 @@ Also note that they are all in [UTC](https://en.wikipedia.org/wiki/Coordinated_U
 * Use the duration field to calculate the end time of each event
 * Change the format of the date and time to be like "18:30, 9 November 2017"
 
-
-
-###References
+### References
 * [Meetup API - Documentation](https://www.meetup.com/meetup_api/)
 * [meetup-api Python package - Documentation](http://meetup-api.readthedocs.io/en/latest/)
 * [datetime Python package - Documentation](https://docs.python.org/2/library/datetime.html)
