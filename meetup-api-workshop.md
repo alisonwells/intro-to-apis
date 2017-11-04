@@ -36,7 +36,7 @@ print(events.results)
 You will see that you get a list of separate events with a dictionary of information for each event. When dealing with JSON, I always use a linter to help me read it - there are many online ones e.g. https://jsonlint.com
 ## 6. Look at an event in detail
 One event looks like this:
-```json
+```
 {
 'status': 'upcoming',
 'utc_offset': 0,
