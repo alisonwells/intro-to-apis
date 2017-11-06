@@ -35,7 +35,9 @@ print(events.results)
 ```
 You will see that you get a list of separate events with a dictionary of information for each event. When dealing with JSON, I always use a linter to help me read it - there are many online ones e.g. https://jsonlint.com
 ## 6. Look at an event in detail
-One event looks like this:
+The Meetup API documentation has a [list of all fields](https://www.meetup.com/meetup_api/docs/:urlname/events/#list) that are possible in an event, but they may not all be populated.
+
+This event looks like this:
 ```
 {
 'status': 'upcoming',
@@ -85,10 +87,11 @@ for event in events.results:
 ```
 Note that each event might not have all the same fields as each other. If you try and use a field that isn't there you will get an error. To guard against that, you may need to test to see whether the field actually exists before asking for it. You can do that by:
 ```python
-if 'name' in event:
-  print(event['name'])
-else:
-  print("No name for this event")
+for event in events.results:
+  if 'name' in event:
+    print(event['name'])
+  else:
+    print("No name for this event")
 ```
 ### Now try...
 * Print out a list of event titles and the number of people for each event who have RSVPed 'Yes'
@@ -96,9 +99,9 @@ else:
 * Replace the ```group_urlname``` parameter with ```rsvp='Yes'``` to get a list of all the upcoming events you have RSVPed 'yes' to
 
 ### 7. Dates and Times
-The timestamps in the event details are expressed as milliseconds *(why do we need millisecond precision for meetup times!)* after 1st January 1970. You can use the ```datetime``` library to convert them to human readable form.
+The timestamps in the event details are expressed as milliseconds *(why do we need millisecond precision for meetup times??!)* after 1st January 1970. You can use the ```datetime``` library to convert them to human readable form.
 
-This example takes the timestamp and turns it into a datetime object, then formats it into ISO 8601 style.
+This example takes the timestamp and turns it into a datetime object, then formats it into [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) style.
 
 ```python
 from datetime import datetime
@@ -109,7 +112,7 @@ timeInSeconds = intTime/1000
 # Convert to datetime object
 datetimeObject = datetime.fromtimestamp(timeInSeconds)
 # Format to ISO format
-formattedDate = datetimeObject.strftime('%Y-%m-%dT%H:%M:%S'
+formattedDate = datetimeObject.strftime('%Y-%m-%dT%H:%M:%S')
 print(formattedDate)
 ```
 Also note that they are all in [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) so you may need to consider the UTC offset information too.
