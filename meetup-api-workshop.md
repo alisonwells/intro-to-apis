@@ -1,24 +1,29 @@
 # Working with the Meetup API
 
-## 1. Get an API key for the Meetup API
+## 1. Use it in the browser
+Go to https://api.meetup.com/2/cities to get a ranked list of the nearest cities. Or you can try it in the [API console] (https://secure.meetup.com/meetup_api/console/) (the better APIs have something like this to help you test it) This particular end point of the API doesn't need authentication as it doesn't contain any personal or protected information, whereas most of the rest of them do. To get access to the rest of the data you need an API key...
+
+## 2. Get an API key for the Meetup API
 Go to https://secure.meetup.com/meetup_api/key/ and after logging in you should see your unique API key. As it says, protect this and don't share it.
 
-## 2. Protect your key
+## 3. Protect your key
 A good way to protect your key is to keep it in a separate file. This allows you to share your main code and commit it to github without sharing your keys.  Create a file called ```config.py``` containing the following:
 ```python
 MEETUP_KEY = your_meetup_key
 ```
+
 ### An alternative method
 You can also export it to an environment value at the command line which the python package will automatically use. However I tend to find that this environment variable is easily lost and you still need to store the key somewhere.
 ```bash
 $ export MEETUP_API_KEY=your_meetup_key
 ```
-## 3. Install the meetup-api Python package
+
+## 4. Install the meetup-api Python package
 ```python
 pip install meetup-api
 ```
 
-## 4. Connect to the Meetup API
+## 5. Connect to the Meetup API
 Create a new file called ```meetup-events.py``` containing the following:
 ```python
 import meetup.api
@@ -27,14 +32,16 @@ import config # Where your key is stored
 client = meetup.api.Client()
 client.api_key = config.MEETUP_KEY # Access the key from the config file
 ```
-## 5. Get a list of events for a group
+
+## 6. Get a list of events for a group
 That has set up the access to the API. Now let's use that connection to look at the AI Club's events. Add the following code:
 ```python
 events = client.GetEvents(group_urlname='ai-club') # Get all the events for AI Club
 print(events.results)
 ```
 You will see that you get a list of separate events with a dictionary of information for each event. When dealing with JSON, I always use a linter to help me read it - there are many online ones e.g. https://jsonlint.com
-## 6. Look at an event in detail
+
+## 7. Look at an event in detail
 The Meetup API documentation has a [list of all fields](https://www.meetup.com/meetup_api/docs/:urlname/events/#list) that are possible in an event, but they may not all be populated.
 
 This event looks like this:
@@ -98,7 +105,7 @@ for event in events.results:
 * Get a list of events for another group - e.g. rladies-london (You can get the right name for each group from the meetup.com URL after the www.meetup.com bit)
 * Replace the ```group_urlname``` parameter with ```rsvp='Yes'``` to get a list of all the upcoming events you have RSVPed 'yes' to
 
-### 7. Dates and Times
+### 8. Dates and Times
 The timestamps in the event details are expressed as milliseconds *(why do we need millisecond precision for meetup times??!)* after 1st January 1970. You can use the ```datetime``` library to convert them to human readable form.
 
 This example takes the timestamp and turns it into a datetime object, then formats it into [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) style.
