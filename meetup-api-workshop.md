@@ -129,6 +129,16 @@ Also note that they are all in [UTC](https://en.wikipedia.org/wiki/Coordinated_U
 * Use the duration field to calculate the end time of each event
 * Change the format of the date and time to be like "18:30, 9 November 2017"
 
+## 9. Posting data to Meetup
+As well as retrieving data from an API, you can also use it to send data to as well. If you want to add a comment to a meetup, all you need is the API connection you set up in part 5, the id of the event and your message. The id for this Meetup is 244457090
+```python
+client.CreateEventComment(comment='I used the Meetup API to post this comment', event_id='244457090')
+```
+Please use this sparingly so you don't spam all the group members!
+
+### Now try...
+* Have a look at the [list of all the other methods you can use with the meetup-api package](http://meetup-api.readthedocs.io/en/latest/meetup_api.html#api-client-method-index) and have fun!
+
 ### References
 * [Meetup API - Documentation](https://www.meetup.com/meetup_api/)
 * [meetup-api Python package - Documentation](http://meetup-api.readthedocs.io/en/latest/)
