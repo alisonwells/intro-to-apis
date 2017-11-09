@@ -1,7 +1,7 @@
 # Working with the Meetup API
 
 ## 1. Use it in the browser
-Go to https://api.meetup.com/2/cities to get a ranked list of the nearest cities. Or you can try it in the [API console] (https://secure.meetup.com/meetup_api/console/) (the better APIs have something like this to help you test it) This particular end point of the API doesn't need authentication as it doesn't contain any personal or protected information, whereas most of the rest of them do. To get access to the rest of the data you need an API key...
+Go to https://api.meetup.com/2/cities to get a ranked list of the nearest cities. Or you can try it in the [API console](https://secure.meetup.com/meetup_api/console/) (the better APIs have something like this to help you test it) This particular end point of the API doesn't need authentication as it doesn't contain any personal or protected information, whereas most of the rest of them do. To get access to the rest of the data you need an API key...
 
 ## 2. Get an API key for the Meetup API
 Go to https://secure.meetup.com/meetup_api/key/ and after logging in you should see your unique API key. As it says, protect this and don't share it.
@@ -130,9 +130,9 @@ Also note that they are all in [UTC](https://en.wikipedia.org/wiki/Coordinated_U
 * Change the format of the date and time to be like "18:30, 9 November 2017"
 
 ## 9. Posting data to Meetup
-As well as retrieving data from an API, you can also use it to send data to as well. If you want to add a comment to a meetup, all you need is the API connection you set up in part 5, the id of the event and your message. The id for this Meetup is 244457090
+As well as retrieving data from an API, you can also use it to send data to as well. If you want to add a comment to a meetup, all you need is the API connection (```client```) you set up in part 5 , the id of the event and your message. The id for this Meetup is 244457090
 ```python
-client.CreateEventComment(comment='I used the Meetup API to post this comment', event_id='244457090')
+client.CreateEventComment(comment='I used the Meetup API to post this comment!', event_id='244457090')
 ```
 Please use this sparingly so you don't spam all the group members!
 
